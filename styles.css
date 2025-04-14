@@ -82,4 +82,12 @@ html {
 .container-user .fa-cart-shopping{
 	font-size: 3rem;
 	color: var(--dark-color);
+  padding-left: 1rem;
+}
+.content-shopping-cart{
+  display: flex;
+  flex-direction: column;
+}
+.container-navbar{
+  background-color: var(--primary-color);
 }
