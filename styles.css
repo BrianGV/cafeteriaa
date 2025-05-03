@@ -169,7 +169,7 @@ html {
   color: #fff;
 }
 .banner{
-   background-image:linear-gradient(100deg,#000000,#00000020), url('images/banner.jpg');
+   background-image:linear-gradient(100deg,#000000,#00000020), url('img/banner.jpg');
    height: 60rem;
    background-size: cover;
    background-position: center;
@@ -200,4 +200,47 @@ html {
   padding: 1rem 3rem;
   text-transform: uppercase;
   border-radius: 3rem;
+}
+/* MAIN CONTENT */
+
+.main-content{
+  background-color: var(--background-color);
+}
+
+/* FEATURES */
+
+.container-features {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 3rem;
+	padding: 3rem 0;
+}
+.card-feature{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  padding: 1.5rem 0;
+}
+.card-feature i{
+  font-size: 2.7rem;
+  color:var(--primary-color);
+}
+
+.feature-content{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.feature-content span {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--dark-color);
+}
+
+.feature-content p {
+  color: #777;
+  font-weight: 500;
 }
