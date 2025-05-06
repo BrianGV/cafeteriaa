@@ -244,3 +244,39 @@ html {
   color: #777;
   font-weight: 500;
 }
+
+.top-categories{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+.container-categories{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 3rem;
+}
+.card-category{
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2rem;
+  gap: 2rem;
+}
+.categorie-moca{
+  background-image: linear-gradient(#00000080, #00000080), url(img/moca-category.jpg);
+  background-size: cover;
+  background-position: bottom;
+}
+.categorie-capuccino{
+  background-image: linear-gradient(#00000080, #00000080), url(img/capuchino-category.jpg);
+  background-size: cover;
+  background-position: bottom;
+}
+.categorie-expresso{
+  background-image: linear-gradient(#00000080, #00000080), url(img/expreso-category.jpg);
+  background-size: cover;
+  background-position: bottom;
+}

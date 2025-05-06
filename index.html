@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cafeteria</title>
     <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
     <link
       rel="icon"
       type="image/png"
@@ -41,20 +42,33 @@
         <nav class="navbar container">
           <i class="fa-solid fa-bars"></i>
           <ul class="menu">
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Moca Helado</a></li>
-            <li><a href="#">Expreso</a></li>
-            <li><a href="#">Capuchino</a></li>
-            <li><a href="#">Más</a></li>
-            <li><a href="#">Blog</a></li>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="mocahelado.html">Moca Helado</a></li>
+            <li><a href="americano.html">Americano</a></li>
+            <li><a href="expreso.html">Expreso</a></li>
+            <li><a href="capuchino.html">Capuchino</a></li>
+            <li><a href="mocahelado.html">Frapuccino</a></li>
+            <li><a href="afogato.html">Afogato</a></li>
+            <li><a href="ubicacion.html">Ubícanos</a></li>
+            <li><a href="conocenos.html">Conócenos</a></li>
           </ul>
 
-          <form class="search-form">
-            <input type="search" placeholder="Buscar..." />
-            <button class="btn-search">
+          <form class="search-form" onsubmit="return buscarBebida()">
+            <input type="search" id="busqueda" placeholder="Buscar..." list="BebidasDisponibles" />
+            <datalist id="BebidasDisponibles">
+              <option value="Moca Helado">
+              <option value="Americano">
+              <option value="Expreso">
+              <option value="Capuchino">
+              <option value="Frapuccino">
+              <option value="Afogato">
+            </datalist>
+            <button type="submit" class="btn-search">
               <i class="fa-solid fa-magnifying-glass"></i>
             </button>
           </form>
+          
+          
         </nav>
       </div>
     </header>
