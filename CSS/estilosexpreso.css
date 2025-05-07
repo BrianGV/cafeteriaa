@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root {
-	--primary-color: #c7a17a;
+	--primary-color: #60472f;
 	--background-color: #f9f5f0;
 	--dark-color: #151515;
 }
@@ -205,8 +205,6 @@ html {
 	font-size: 2rem;
 	color: #fff;
 }
-
-/* Grid para sobre-producto: título arriba, imagen a la izquierda, texto a la derecha */
 .sobre-producto {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -214,16 +212,13 @@ html {
   gap: 4rem;
   padding: 6rem 2rem;
 }
-
-/* Título ocupando toda la fila superior */
 .sobre-producto > .heading-1 {
   grid-column: 1 / span 2;
   grid-row: 1;
   margin-bottom: 2rem;
-  color: #2d1e19;  /* Color muy oscuro para el título, reflejando la intensidad del espresso */
+  color: #2d1e19;
 }
 
-/* Contenedor para imagen y texto */
 .sobre-producto .contenido-sobre {
   grid-column: 1 / span 2;
   grid-row: 2;
@@ -232,30 +227,23 @@ html {
   gap: 3rem;
 }
 
-/* Imagen a la izquierda */
 .sobre-producto .contenido-sobre img {
   width: 100%;
   max-height: 40rem;
   object-fit: cover;
   border-radius: 1rem;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);  /* Sombra más oscura */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
 }
 
 .sobre-producto .contenido-sobre img:hover {
   transform: scale(1.02);
 }
-
-/* Texto a la derecha */
 .sobre-producto .contenido-sobre p {
   font-size: 1.6rem;
   line-height: 1.8;
-  color: #333;  /* Color más oscuro para el texto, mejor legibilidad */
+  color: #333;
 }
-
-/* ======================
-   FOOTER
-   ====================== */
 .footer {
 	background-color: var(--primary-color);
   }

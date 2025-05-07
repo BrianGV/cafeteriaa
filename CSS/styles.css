@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
 :root {
-  --primary-color: #c7a17a;
+  --primary-color: #60472f;
   --background-color: #f9f5f0;
   --dark-color: #151515;
 }
@@ -336,7 +336,6 @@ html {
 	color: #fff;
 }
 
-/* Products */
 .container-products {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
