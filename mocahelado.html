@@ -1,0 +1,158 @@
+<!-- mocahelado.html -->
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moca Helado – Cafetería</title>
+    <link rel="stylesheet" href="estilosexpreso.css" />
+    <script src="https://kit.fontawesome.com/a50b3a1626.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <!-- HEADER / NAVBAR -->
+    <header>
+      <div class="container-hero">
+        <div class="container hero">
+          <div class="customer-support">
+            <i class="fa-solid fa-headset"></i>
+            <div class="content-customer-support">
+              <span class="text">Soporte al cliente</span>
+              <span class="number">948738012</span>
+            </div>
+          </div>
+          <div class="container-logo">
+            <i class="fa-solid fa-mug-hot"></i>
+            <h1 class="logo"><a href="index.html">Cafetería</a></h1>
+          </div>
+          <div class="container-user">
+            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-cart-shopping"></i>
+            <div class="content-shopping-cart">
+              <span class="text">Carrito</span>
+              <span class="number">(0)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-navbar">
+        <nav class="navbar container">
+          <i class="fa-solid fa-bars"></i>
+          <ul class="menu">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="mocahelado.html" class="active">Moca Helado</a></li>
+            <li><a href="americano.html">Americano</a></li>
+            <li><a href="expreso.html">Expreso</a></li>
+            <li><a href="capuchino.html">Capuchino</a></li>
+            <li><a href="frapuccino.html">Frapuccino</a></li>
+            <li><a href="afogato.html">Afogato</a></li>
+            <li><a href="conocenos.html">Conócenos</a></li>
+            <li><a href="registro.html">Regístrate</a></li>
+          </ul>
+          <form class="search-form" onsubmit="return buscarBebida()">
+            <input
+              type="search"
+              id="busqueda"
+              placeholder="Buscar..."
+              list="BebidasDisponibles"
+            />
+            <datalist id="BebidasDisponibles">
+              <option value="Moca Helado"></option>
+              <option value="Americano"></option>
+              <option value="Expreso"></option>
+              <option value="Capuchino"></option>
+              <option value="Frapuccino"></option>
+              <option value="Afogato"></option>
+            </datalist>
+            <button type="submit" class="btn-search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </form>
+        </nav>
+      </div>
+    </header>
+
+    <!-- MAIN: Moca Helado -->
+    <main class="sobre-producto container">
+      <h1 class="heading-1">El Moca Helado</h1>
+      <div class="contenido-sobre">
+        <img src="img/icedmocha_thumbnail.jpg" alt="Café Moca Helado" />
+        <p>
+          El Moca Helado es la opción perfecta para los amantes del chocolate y el café
+          que buscan una experiencia refrescante. Esta deliciosa bebida combina la intensidad
+          de nuestro espresso peruano de altura con chocolate premium, leche fría cremosa y 
+          hielo finamente triturado.
+          <br><br>
+          En Cafetería, elaboramos nuestro Moca Helado artesanalmente, empezando con 
+          un sirope de chocolate oscuro preparado cada mañana. El espresso se extrae al momento 
+          y se mezcla con el chocolate para crear una base rica en sabor. Añadimos leche fría 
+          de la mejor calidad y hielo triturado, coronando la creación con crema batida casera 
+          y un toque de cacao en polvo.
+          <br><br>
+          Para los más golosos, ofrecemos variantes con salsa de caramelo, chispas de chocolate 
+          o una pizca de canela. Esta bebida es ideal para los días calurosos o como un capricho 
+          dulce en cualquier momento. Su equilibrio entre el amargor del café, la dulzura del 
+          chocolate y la frescura del hielo lo convierten en uno de los favoritos de nuestra clientela.
+        </p>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container container-footer">
+        <div class="menu-footer">
+          <div class="contact-info">
+            <p class="title-footer">Información de Contacto</p>
+            <ul>
+              <li>Dirección: Calle Las Esmeraldas 528 Urb. Santa Inés</li>
+              <li>Teléfono: +51 948 738 012</li>
+              <li>Email: soportecafeteria12@gmail.com</li>
+            </ul>
+            <div class="social-icons">
+              <span class="facebook"><i class="fa-brands fa-facebook-f"></i></span>
+              <span class="twitter"><i class="fa-brands fa-twitter"></i></span>
+              <span class="youtube"><i class="fa-brands fa-youtube"></i></span>
+              <span class="pinterest"><i class="fa-brands fa-pinterest-p"></i></span>
+              <span class="instagram"><i class="fa-brands fa-instagram"></i></span>
+            </div>
+          </div>
+          <div class="information">
+            <p class="title-footer">Información</p>
+            <ul>
+              <li><a href="#">Acerca de Nosotros</a></li>
+              <li><a href="#">Información Delivery</a></li>
+              <li><a href="#">Políticas de Privacidad</a></li>
+              <li><a href="#">Términos y Condiciones</a></li>
+              <li><a href="#">Contáctanos</a></li>
+            </ul>
+          </div>
+          <div class="my-account">
+            <p class="title-footer">Mi Cuenta</p>
+            <ul>
+              <li><a href="#">Mi Cuenta</a></li>
+              <li><a href="#">Historial de Órdenes</a></li>
+              <li><a href="#">Lista de Deseos</a></li>
+              <li><a href="#">Boletín</a></li>
+              <li><a href="#">Reembolsos</a></li>
+            </ul>
+          </div>
+          <div class="newsletter">
+            <p class="title-footer">Boletín Informativo</p>
+            <div class="content">
+              <p>
+                Suscríbete a nuestros boletines ahora y mantente al día con
+                ofertas.
+              </p>
+              <input type="email" placeholder="Ingresa el correo aquí..." />
+              <button>Suscríbete</button>
+            </div>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>Desarrollado por Brian González &copy; 2025</p>
+          <img src="img/payment.png" alt="Pagos" />
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

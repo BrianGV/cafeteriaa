@@ -1,16 +1,25 @@
-<!-- afogato.html -->
+<!-- registro.html -->
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Afogato – Cafetería</title>
-    <link rel="stylesheet" href="estilosexpreso.css" />
-    <script src="https://kit.fontawesome.com/a50b3a1626.js" crossorigin="anonymous"></script>
+    <title>Cafetería - Registro</title>
+    <link rel="stylesheet" href="estilosregistro.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="img/png-clipart-logo-cappuccino-cafe-coffee-ristretto-coffee-cafe-logo-thumbnail.png"
+    />
+    <script src="script.js" defer></script>
+    <script
+      src="https://kit.fontawesome.com/a50b3a1626.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
-    <!-- HEADER / NAVBAR -->
+    <!-- HEADER / NAVBAR (igual que en index.html) -->
     <header>
       <div class="container-hero">
         <div class="container hero">
@@ -45,61 +54,102 @@
             <li><a href="expreso.html">Expreso</a></li>
             <li><a href="capuchino.html">Capuchino</a></li>
             <li><a href="mocahelado.html">Frapuccino</a></li>
-            <li><a href="afogato.html" class="active">Afogato</a></li>
+            <li><a href="afogato.html">Afogato</a></li>
             <li><a href="conocenos.html">Conócenos</a></li>
-            <li><a href="registro.html">Regístrate</a></li>
+            <li><a href="registro.html" class="active">Regístrate</a></li>
           </ul>
-          <form class="search-form" onsubmit="return buscarBebida()">
-            <input
-              type="search"
-              id="busqueda"
-              placeholder="Buscar..."
-              list="BebidasDisponibles"
-            />
-            <datalist id="BebidasDisponibles">
-              <option value="Moca Helado"></option>
-              <option value="Americano"></option>
-              <option value="Expreso"></option>
-              <option value="Capuchino"></option>
-              <option value="Frapuccino"></option>
-              <option value="Afogato"></option>
-            </datalist>
-            <button type="submit" class="btn-search">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-          </form>
         </nav>
       </div>
     </header>
 
-    <!-- MAIN: Afogato -->
-    <main class="sobre-producto container">
-      <h1 class="heading-1">El Afogato</h1>
-      <div class="contenido-sobre">
-        <img src="img/affogato-4776668-hero-08-40d7a68d12ba46f48eaea3c43aba715c.jpg" alt="Café Afogato" />
-        <p>
-          El Afogato, una joya de la tradición italiana, representa la perfecta
-          armonía entre lo cálido y lo frío. Esta deliciosa creación consiste en
-          una bola de helado de vainilla premium bañada con un shot de espresso
-          recién extraído. En Cafetería elaboramos nuestro Afogato con
-          granos selectos de las alturas peruanas, tostados meticulosamente para
-          potenciar sus notas de chocolate y frutos secos.
-          <br><br>
-          El contraste de temperaturas crea una experiencia sensorial única: el
-          calor del espresso comienza a derretir lentamente el helado, creando
-          una mezcla cremosa con intenso sabor a café. Para los más aventureros,
-          ofrecemos variantes con toques de licor de amaretto, caramelo artesanal
-          o virutas de chocolate negro.
-          <br><br>
-          Ideal como postre o como pausa indulgente en cualquier momento del día,
-          nuestro Afogato es un ritual que celebra la tradición cafetera en su
-          expresión más sofisticada. ¡Déjate sorprender por esta deliciosa fusión
-          de sabores y texturas!
-        </p>
+    <!-- MAIN: FORMULARIO DE REGISTRO -->
+    <main class="registro-main container">
+      <h1 class="heading-1">Únete a nuestra comunidad de café</h1>
+      <p class="form-subtitle">Completa tus datos para disfrutar de beneficios exclusivos</p>
+      
+      <form id="form-registro" class="form-registro">
+        <div class="form-group">
+          <label for="nombres">
+            <i class="fa-solid fa-user-pen"></i> Nombres y Apellidos
+          </label>
+          <input
+            type="text"
+            id="nombres"
+            name="nombres"
+            placeholder="Ej. Juan Pérez"
+            required
+          />
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fecha_nac">
+              <i class="fa-solid fa-calendar-days"></i> Fecha de Nacimiento
+            </label>
+            <input type="date" id="fecha_nac" name="fecha_nac" required />
+          </div>
+          
+          <div class="form-group">
+            <label for="edad">
+              <i class="fa-solid fa-cake-candles"></i> Edad
+            </label>
+            <input
+              type="number"
+              id="edad"
+              name="edad"
+              placeholder="Ej. 30"
+              min="1"
+              required
+            />
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">
+            <i class="fa-solid fa-envelope"></i> Correo Electrónico
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="tucorreo@ejemplo.com"
+            required
+          />
+        </div>
+        
+        <div class="form-group checkbox-group">
+          <input
+            type="checkbox"
+            id="promociones"
+            name="promociones"
+          />
+          <label for="promociones">
+            Deseo recibir correos de promociones y novedades exclusivas
+          </label>
+        </div>
+        
+        <button type="submit" class="btn-submit">
+          <i class="fa-solid fa-mug-hot"></i> Completar Registro
+        </button>
+      </form>
+      
+      <div class="registro-benefits">
+        <div class="benefit-item">
+          <i class="fa-solid fa-gift"></i>
+          <p>Promociones exclusivas</p>
+        </div>
+        <div class="benefit-item">
+          <i class="fa-solid fa-percent"></i>
+          <p>Descuentos especiales</p>
+        </div>
+        <div class="benefit-item">
+          <i class="fa-solid fa-bell"></i>
+          <p>Notificaciones de nuevos productos</p>
+        </div>
       </div>
     </main>
 
-    <!-- FOOTER -->
+    <!-- FOOTER (igual que en index.html) -->
     <footer class="footer">
       <div class="container container-footer">
         <div class="menu-footer">
@@ -142,8 +192,7 @@
             <p class="title-footer">Boletín Informativo</p>
             <div class="content">
               <p>
-                Suscríbete a nuestros boletines ahora y mantente al día con
-                ofertas.
+                Suscríbete a nuestros boletines ahora y mantente al día con ofertas.
               </p>
               <input type="email" placeholder="Ingresa el correo aquí..." />
               <button>Suscríbete</button>
@@ -158,3 +207,4 @@
     </footer>
   </body>
 </html>
+

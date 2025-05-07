@@ -47,28 +47,32 @@
             <li><a href="americano.html">Americano</a></li>
             <li><a href="expreso.html">Expreso</a></li>
             <li><a href="capuchino.html">Capuchino</a></li>
-            <li><a href="mocahelado.html">Frapuccino</a></li>
+            <li><a href="frapuccino.html">Frapuccino</a></li>
             <li><a href="afogato.html">Afogato</a></li>
-            <li><a href="ubicacion.html">Ubícanos</a></li>
             <li><a href="conocenos.html">Conócenos</a></li>
+            <li><a href="registro.html">Regístrate</a></li>
           </ul>
 
           <form class="search-form" onsubmit="return buscarBebida()">
-            <input type="search" id="busqueda" placeholder="Buscar..." list="BebidasDisponibles" />
+            <input
+              type="search"
+              id="busqueda"
+              placeholder="Buscar..."
+              list="BebidasDisponibles"
+            />
             <datalist id="BebidasDisponibles">
-              <option value="Moca Helado">
-              <option value="Americano">
-              <option value="Expreso">
-              <option value="Capuchino">
-              <option value="Frapuccino">
-              <option value="Afogato">
+              <option value="Moca Helado"></option>
+              <option value="Americano"></option>
+              <option value="Expreso"></option>
+              <option value="Capuchino"></option>
+              <option value="Frapuccino"></option>
+              <option value="Afogato"></option>
             </datalist>
+
             <button type="submit" class="btn-search">
               <i class="fa-solid fa-magnifying-glass"></i>
             </button>
           </form>
-          
-          
         </nav>
       </div>
     </header>
@@ -79,51 +83,53 @@
         <a href="#">Comprar ahora</a>
       </div>
     </section>
-		<main class="main-content">
-			<section class="container container-features">
-				<div class="card-feature">
-					<i class="fa-solid fa-truck-fast"></i>
-					<div class="feature-content">
-						<span>Envío gratuito a todo Trujillo</span>
-						<p>En pedido superior a S/50</p>
-					</div>
-				</div>
-				<div class="card-feature">
-					<i class="fa-solid fa-wallet"></i>
-					<div class="feature-content">
-						<span>Contrareembolso</span>
-						<p>100% garantía de devolución de dinero</p>
-					</div>
-				</div>
-				<div class="card-feature">
-					<i class="fa-solid fa-credit-card"></i>
-					<div class="feature-content">
-						<span>Obten nuestra tarjeta ExpressoPass+</span>
-						<p>Para recibir descuentos y regalos semanales</p>
-					</div>
-				</div>
-				<div class="card-feature">
-					<i class="fa-solid fa-headset"></i>
-					<div class="feature-content">
-						<span>Servicio al cliente 24/7</span>
-						<p>LLámenos 24/7 al 948 738 012</p>
-					</div>
-				</div>
-			</section>
+    <main class="main-content">
+      <section class="container container-features">
+        <div class="card-feature">
+          <i class="fa-solid fa-truck-fast"></i>
+          <div class="feature-content">
+            <span>Envío gratuito a todo Trujillo</span>
+            <p>En pedido superior a S/50</p>
+          </div>
+        </div>
+        <div class="card-feature">
+          <i class="fa-solid fa-wallet"></i>
+          <div class="feature-content">
+            <span>Contrareembolso</span>
+            <p>100% garantía de devolución de dinero</p>
+          </div>
+        </div>
+        <div class="card-feature">
+          <i class="fa-solid fa-credit-card"></i>
+          <div class="feature-content">
+            <span>Obten nuestra tarjeta ExpressoPass+</span>
+            <p>Para recibir descuentos y regalos semanales</p>
+          </div>
+        </div>
+        <div class="card-feature">
+          <i class="fa-solid fa-headset"></i>
+          <div class="feature-content">
+            <span>Servicio al cliente 24/7</span>
+            <p>LLámenos 24/7 al 948 738 012</p>
+          </div>
+        </div>
+      </section>
       <section class="container top-categories">
         <h1 class="heading-1">Mejores Categorias</h1>
         <div class="container-categories">
           <div class="card-category categorie-moca">
             <p>Café Moca</p>
-            <span>Ver más</span>
+            <a href="mocahelado.html"><span>Ver más</span></a>
           </div>
+
           <div class="card-category categorie-expresso">
-            <p>Expreso</p>
-            <span>Ver más</span>
+            <p>Expreso Americano</p>
+            <a href="expreso.html"><span>Ver más</span></a>
           </div>
+
           <div class="card-category categorie-capuccino">
             <p>Capuccino</p>
-            <span>Ver más</span>
+            <a href="capuchino.html"><span>Ver más</span></a>
           </div>
         </div>
       </section>
@@ -137,7 +143,7 @@
         <div class="container-products">
           <div class="card-product">
             <div class="container-img">
-              <img src="img/cafe-irish.jpg" alt="Cafe Irish">
+              <img src="img/cafe-irish.jpg" alt="Cafe Irish" />
               <span class="discount">-12%</span>
               <div class="button-group">
                 <span>
@@ -167,13 +173,182 @@
               <p class="price">S/14.50 <span>S/16.50</span></p>
             </div>
           </div>
-          A
-        </div>
-      </section>
-    </main>
-    <script
-      src="https://kit.fontawesome.com/8fe0b5cbc2.js"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+          <div class="card-product">
+						<div class="container-img">
+							<img
+								src="img/cafe-ingles.jpg"
+								alt="Cafe incafe-ingles.jpg"
+							/>
+							<span class="discount">-15%</span>
+							<div class="button-group">
+								<span>
+									<i class="fa-regular fa-eye"></i>
+								</span>
+								<span>
+									<i class="fa-regular fa-heart"></i>
+								</span>
+								<span>
+									<i class="fa-solid fa-code-compare"></i>
+								</span>
+							</div>
+						</div>
+						<div class="content-card-product">
+							<div class="stars">
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-regular fa-star"></i>
+								<i class="fa-regular fa-star"></i>
+							</div>
+							<h3>Cafe Inglés</h3>
+							<span class="add-cart">
+								<i class="fa-solid fa-basket-shopping"></i>
+							</span>
+							<p class="price">s/15.70 <span>s/18.50</span></p>
+						</div>
+					</div>
+					<!--  -->
+					<div class="card-product">
+						<div class="container-img">
+							<img src="img/cafe-viena.jpg" alt="Cafe Viena" />
+							<span class="discount">-10%</span>
+							<div class="button-group">
+								<span>
+									<i class="fa-regular fa-eye"></i>
+								</span>
+								<span>
+									<i class="fa-regular fa-heart"></i>
+								</span>
+								<span>
+									<i class="fa-solid fa-code-compare"></i>
+								</span>
+							</div>
+						</div>
+						<div class="content-card-product">
+							<div class="stars">
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-solid fa-star"></i>
+							</div>
+							<h3>Cafe Viena</h3>
+							<span class="add-cart">
+								<i class="fa-solid fa-basket-shopping"></i>
+							</span>
+							<p class="price">s/13.85 <span>s/15.50</span></p>
+						</div>
+					</div>
+					<!--  -->
+					<div class="card-product">
+						<div class="container-img">
+							<img src="img/cafe-liqueurs.jpg" alt="Cafe Liqueurs" />
+							<div class="button-group">
+								<span>
+									<i class="fa-regular fa-eye"></i>
+								</span>
+								<span>
+									<i class="fa-regular fa-heart"></i>
+								</span>
+								<span>
+									<i class="fa-solid fa-code-compare"></i>
+								</span>
+							</div>
+						</div>
+						<div class="content-card-product">
+							<div class="stars">
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-regular fa-star"></i>
+							</div>
+							<h3>Cafe Liqueurs</h3>
+							<span class="add-cart">
+								<i class="fa-solid fa-basket-shopping"></i>
+							</span>
+							<p class="price">s/15.60</p>
+						</div>
+					</div>
+				</div>
+			</section>
+		<footer class="footer">
+			<div class="container container-footer">
+				<div class="menu-footer">
+					<div class="contact-info">
+						<p class="title-footer">Información de Contacto</p>
+						<ul>
+							<li>
+								Dirección: Calle Las Esmeraldas 528 Urb. Santa Inés
+							</li>
+							<li>Teléfono: +51 948 738 012</li>
+							<li>Email: soportecafeteria12@gmail.com</li>
+						</ul>
+						<div class="social-icons">
+							<span class="facebook">
+								<i class="fa-brands fa-facebook-f"></i>
+							</span>
+							<span class="twitter">
+								<i class="fa-brands fa-twitter"></i>
+							</span>
+							<span class="youtube">
+								<i class="fa-brands fa-youtube"></i>
+							</span>
+							<span class="pinterest">
+								<i class="fa-brands fa-pinterest-p"></i>
+							</span>
+							<span class="instagram">
+								<i class="fa-brands fa-instagram"></i>
+							</span>
+						</div>
+					</div>
+
+					<div class="information">
+						<p class="title-footer">Información</p>
+						<ul>
+							<li><a href="#">Acerca de Nosotros</a></li>
+							<li><a href="#">Información Delivery</a></li>
+							<li><a href="#">Politicas de Privacidad</a></li>
+							<li><a href="#">Términos y condiciones</a></li>
+							<li><a href="#">Contactános</a></li>
+						</ul>
+					</div>
+
+					<div class="my-account">
+						<p class="title-footer">Mi cuenta</p>
+
+						<ul>
+							<li><a href="#">Mi cuenta</a></li>
+							<li><a href="#">Historial de ordenes</a></li>
+							<li><a href="#">Lista de deseos</a></li>
+							<li><a href="#">Boletín</a></li>
+							<li><a href="#">Reembolsos</a></li>
+						</ul>
+					</div>
+
+					<div class="newsletter">
+						<p class="title-footer">Boletín informativo</p>
+
+						<div class="content">
+							<p>
+								Suscríbete a nuestros boletines ahora y mantente al
+								día con nuevas colecciones y ofertas exclusivas.
+							</p>
+							<input type="email" placeholder="Ingresa el correo aquí...">
+							<button>Suscríbete</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="copyright">
+					<p>
+						Desarrollado por Brian González &copy; 2025
+					</p>
+
+					<img src="img/payment.png" alt="Pagos">
+				</div>
+			</div>
+		</footer>
+	</body>
+  <script src="https://kit.fontawesome.com/a50b3a1626.js" crossorigin="anonymous"></script>
 </html>
