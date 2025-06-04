@@ -14,6 +14,32 @@
     />
   </head>
   <body>
+    
+    <div id="offline-message" class="offline-overlay">
+      <div class="offline-content">
+        <div class="offline-icon">
+          <i class="fa-solid fa-wifi"></i>
+          <div class="wifi-slash"></div>
+        </div>
+        <h2>¡Ups! Se perdió la conexión</h2>
+        <p>Parece que no tienes conexión a internet. Por favor, verifica tu conexión y vuelve a intentarlo.</p>
+        <div class="coffee-animation">
+          <div class="coffee-cup">
+            <div class="coffee-steam"></div>
+            <div class="coffee-steam"></div>
+            <div class="coffee-steam"></div>
+          </div>
+        </div>
+        <button id="retry-connection" class="retry-btn">
+          <i class="fa-solid fa-rotate-right"></i>
+          Reintentar conexión
+        </button>
+        <div class="connection-status">
+          <span id="connection-text">Verificando conexión...</span>
+        </div>
+      </div>
+    </div>
+
     <header>
       <div class="container-hero">
         <div class="container hero">
@@ -21,7 +47,7 @@
             <i class="fa-solid fa-headset"></i>
             <div class="content-customer-support">
               <span class="text">Soporte al cliente</span>
-              <span class="number">948738012</span>
+              <span class="number">948 738 012</span>
             </div>
           </div>
           <div class="container-logo">
@@ -76,6 +102,17 @@
         </nav>
       </div>
     </header>
+    
+    <div id="theme-toggle" class="theme-toggle">
+      <div class="theme-tooltip">Cambiar tema</div>
+      <i class="fa-solid fa-moon"></i>
+    </div>
+
+    <div id="whatsapp-float" class="whatsapp-float">
+      <div class="whatsapp-tooltip">¡Haz tu pedido aquí!</div>
+      <i class="fab fa-whatsapp"></i>
+    </div>
+
     <section class="banner">
       <div class="content-banner">
         <p>Café Delicioso</p>
@@ -346,6 +383,7 @@
 				</div>
 			</div>
 		</footer>
-	</body>
-  <script src="https://kit.fontawesome.com/a50b3a1626.js" crossorigin="anonymous"></script>
+
+    <script src="https://kit.fontawesome.com/a50b3a1626.js" crossorigin="anonymous"></script>
+  </body>
 </html>
