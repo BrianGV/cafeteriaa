@@ -40,6 +40,58 @@
       </div>
     </div>
 
+    <!-- MODAL DEL CARRITO DE COMPRAS -->
+    <div id="cart-modal" class="cart-modal">
+      <div class="cart-modal-content">
+        <div class="cart-header">
+          <h2><i class="fa-solid fa-shopping-cart"></i> Mi Carrito</h2>
+          <button id="close-cart" class="close-cart-btn">
+            <i class="fa-solid fa-times"></i>
+          </button>
+        </div>
+        
+        <div class="cart-body">
+          <div id="cart-items" class="cart-items">
+            <!-- Los productos se agregarán aquí dinámicamente -->
+          </div>
+          
+          <div id="cart-empty" class="cart-empty">
+            <i class="fa-solid fa-shopping-cart"></i>
+            <h3>Tu carrito está vacío</h3>
+            <p>Agrega algunos productos deliciosos para comenzar</p>
+          </div>
+        </div>
+        
+        <div class="cart-footer">
+          <div class="cart-summary">
+            <div class="summary-row">
+              <span>Subtotal:</span>
+              <span id="cart-subtotal">S/0.00</span>
+            </div>
+            <div class="summary-row">
+              <span>Envío:</span>
+              <span id="cart-shipping">S/5.00</span>
+            </div>
+            <div class="summary-row total">
+              <span>Total:</span>
+              <span id="cart-total">S/0.00</span>
+            </div>
+          </div>
+          
+          <div class="cart-actions">
+            <button id="clear-cart" class="btn-secondary">
+              <i class="fa-solid fa-trash"></i>
+              Vaciar Carrito
+            </button>
+            <button id="checkout-btn" class="btn-primary">
+              <i class="fa-solid fa-credit-card"></i>
+              Proceder al Pago
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <header>
       <div class="container-hero">
         <div class="container hero">
@@ -56,10 +108,13 @@
           </div>
           <div class="container-user">
             <i class="fa-solid fa-user"></i>
-            <i class="fa-solid fa-cart-shopping"></i>
-            <div class="content-shopping-cart">
-              <span class="text">Carrito</span>
-              <span class="number">(0)</span>
+            <div class="cart-icon-container" id="cart-icon">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span id="cart-count" class="cart-count">0</span>
+              <div class="content-shopping-cart">
+                <span class="text">Carrito</span>
+                <span class="number" id="cart-display-count">(0)</span>
+              </div>
             </div>
           </div>
         </div>
@@ -147,7 +202,7 @@
           <i class="fa-solid fa-headset"></i>
           <div class="feature-content">
             <span>Servicio al cliente 24/7</span>
-            <p>LLámenos 24/7 al 948 738 012</p>
+            <p>LLámanos 24/7 al 948 738 012</p>
           </div>
         </div>
       </section>
@@ -204,7 +259,7 @@
                 <span class="number">(128)</span>
               </div>
               <h3>Café Irish</h3>
-              <span class="add-cart">
+              <span class="add-cart" data-product='{"name": "Café Irish", "price": 14.50, "oldPrice": 16.50, "image": "img/cafe-irish.jpg", "id": "cafe-irish"}'>
                 <i class="fa-solid fa-basket-shopping"></i>
               </span>
               <p class="price">S/14.50 <span>S/16.50</span></p>
@@ -238,10 +293,10 @@
 								<i class="fa-regular fa-star"></i>
 							</div>
 							<h3>Cafe Inglés</h3>
-							<span class="add-cart">
+							<span class="add-cart" data-product='{"name": "Cafe Inglés", "price": 15.70, "oldPrice": 18.50, "image": "img/cafe-ingles.jpg", "id": "cafe-ingles"}'>
 								<i class="fa-solid fa-basket-shopping"></i>
 							</span>
-							<p class="price">s/15.70 <span>s/18.50</span></p>
+							<p class="price">S/15.70 <span>S/18.50</span></p>
 						</div>
 					</div>
 					<div class="card-product">
@@ -269,10 +324,10 @@
 								<i class="fa-solid fa-star"></i>
 							</div>
 							<h3>Cafe Viena</h3>
-							<span class="add-cart">
+							<span class="add-cart" data-product='{"name": "Cafe Viena", "price": 13.85, "oldPrice": 15.50, "image": "img/cafe-viena.jpg", "id": "cafe-viena"}'>
 								<i class="fa-solid fa-basket-shopping"></i>
 							</span>
-							<p class="price">s/13.85 <span>s/15.50</span></p>
+							<p class="price">S/13.85 <span>S/15.50</span></p>
 						</div>
 					</div>
 					<div class="card-product">
@@ -299,10 +354,10 @@
 								<i class="fa-regular fa-star"></i>
 							</div>
 							<h3>Cafe Liqueurs</h3>
-							<span class="add-cart">
+							<span class="add-cart" data-product='{"name": "Cafe Liqueurs", "price": 15.60, "oldPrice": null, "image": "img/cafe-liqueurs.jpg", "id": "cafe-liqueurs"}'>
 								<i class="fa-solid fa-basket-shopping"></i>
 							</span>
-							<p class="price">s/15.60</p>
+							<p class="price">S/15.60</p>
 						</div>
 					</div>
 				</div>

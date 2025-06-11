@@ -1,0 +1,133 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\begin{document}
+
+\title{RESOLUCION PRACTICA 09 - BRIAN ALEX GONZÁLEZ VEGA}
+\author{}
+\date{}
+\maketitle
+
+\section{Ejercicio 1}
+Dadas dos máquinas con medias poblacionales iguales $\mu_1 = \mu_2 = 50$ y desviaciones estándar conocidas $\sigma_1 = 5$, $\sigma_2 = 4$, con tamaños de muestra $n_1 = 25$, $n_2 = 36$, hallar $P(\bar{X}_1 - \bar{X}_2 > 2)$.
+
+\textbf{Solución:}  
+La diferencia de medias muestrales $\bar{X}_1 - \bar{X}_2$ sigue una distribución normal porque las desviaciones estándar poblacionales son conocidas. La media es $\mu_1 - \mu_2 = 0$ y la varianza es $\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2} = \frac{25}{25} + \frac{16}{36} = 1 + \frac{4}{9} = \frac{13}{9}$. Así, $\bar{X}_1 - \bar{X}_2 \sim N\left(0, \frac{13}{9}\right)$.  
+Entonces,  
+\[ P(\bar{X}_1 - \bar{X}_2 > 2) = P\left( Z > \frac{2}{\sqrt{\frac{13}{9}}} \right) = P\left( Z > \frac{6}{\sqrt{13}} \right) \approx P(Z > 1.664) \approx 1 - 0.9519 = 0.0481, \]
+donde $Z \sim N(0,1)$ y el valor se obtiene interpolando en la tabla normal estándar.
+
+\textbf{Respuesta:} Aproximadamente 0.0481.
+
+\section{Ejercicio 2}
+Dadas $\mu_1 = 150$, $\mu_2 = 145$, $\sigma_1 = 4$, $\sigma_2 = 5$, $n_1 = 16$, $n_2 = 25$, calcular $P(\bar{X}_1 - \bar{X}_2 < 2)$.
+
+\textbf{Solución:}  
+La diferencia $\bar{X}_1 - \bar{X}_2$ tiene media $\mu_1 - \mu_2 = 150 - 145 = 5$ y varianza $\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2} = \frac{16}{16} + \frac{25}{25} = 1 + 1 = 2$. Así, $\bar{X}_1 - \bar{X}_2 \sim N(5, 2)$.  
+Entonces,  
+\[ P(\bar{X}_1 - \bar{X}_2 < 2) = P\left( Z < \frac{2 - 5}{\sqrt{2}} \right) = P(Z < -2.121) \approx 0.0169, \]
+usando la tabla normal estándar para $Z \sim N(0,1)$.
+
+\textbf{Respuesta:} Aproximadamente 0.0169.
+
+\section{Ejercicio 3}
+Dadas $\mu_1 = 100$, $\mu_2 = 100$, $\sigma_1 = 3$, $\sigma_2 = 3$, $n_1 = 36$, $n_2 = 36$, hallar $P(|\bar{X}_1 - \bar{X}_2| > 1.5)$.
+
+\textbf{Solución:}  
+La media de $\bar{X}_1 - \bar{X}_2$ es $0$, y la varianza es $\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2} = \frac{9}{36} + \frac{9}{36} = 0.5$. Así, $\bar{X}_1 - \bar{X}_2 \sim N(0, 0.5)$.  
+Por simetría,  
+\[ P(|\bar{X}_1 - \bar{X}_2| > 1.5) = 2 P\left( \bar{X}_1 - \bar{X}_2 > 1.5 \right) = 2 P\left( Z > \frac{1.5}{\sqrt{0.5}} \right) \approx 2 P(Z > 2.121) \approx 2 \times 0.0169 = 0.0338. \]
+
+\textbf{Respuesta:} Aproximadamente 0.0338.
+
+\section{Ejercicio 4}
+Dadas $X_1 \sim N(80, 25)$, $X_2 \sim N(85, 36)$, $n_1 = 25$, $n_2 = 36$, calcular $P(-3 < \bar{X}_1 - \bar{X}_2 < 2)$.
+
+\textbf{Solución:}  
+La media es $80 - 85 = -5$, y la varianza es $\frac{25}{25} + \frac{36}{36} = 1 + 1 = 2$. Así, $\bar{X}_1 - \bar{X}_2 \sim N(-5, 2)$.  
+Entonces,  
+\[ P(-3 < \bar{X}_1 - \bar{X}_2 < 2) = P\left( \frac{-3 - (-5)}{\sqrt{2}} < Z < \frac{2 - (-5)}{\sqrt{2}} \right) = P(1.414 < Z < 4.949) \approx 1 - 0.9213 = 0.0787, \]
+donde $P(Z < 4.949) \approx 1$ y $P(Z < 1.414) \approx 0.9213$.
+
+\textbf{Respuesta:} Aproximadamente 0.0787.
+
+\section{Ejercicio 5}
+Dadas varianzas $\sigma_1^2 = \sigma_2^2 = 1.2$, $n_1 = 10$, $n_2 = 12$, calcular $P\left(0.5 < \frac{S_1^2}{S_2^2} < 2\right)$ usando la distribución F con gl = 9 y 11.
+
+\textbf{Solución:}  
+Como las varianzas poblacionales son iguales, $F = \frac{S_1^2}{S_2^2} \sim F(9, 11)$.  
+\[ P(0.5 < F < 2) = P(F < 2) - P(F < 0.5). \]  
+Usando una tabla de la distribución F (valores típicos), $P(F < 2) \approx 0.816$ y $P(F < 0.5) \approx 0.128$, así que $P(0.5 < F < 2) \approx 0.816 - 0.128 = 0.688 \approx 0.69$.
+
+\textbf{Respuesta:} Aproximadamente 0.69.
+
+\section{Ejercicio 6}
+Calcular $P\left( \frac{S_1^2}{S_2^2} > 2.4 \right)$, asumiendo $F \sim F(9, 11)$ (condiciones no visibles).
+
+\textbf{Solución:}  
+$F = \frac{S_1^2}{S_2^2} \sim F(9, 11)$. La probabilidad $P(F > 2.4)$ se obtiene directamente de la tabla de la distribución F para grados de libertad 9 y 11. (El valor exacto depende de la tabla específica proporcionada en el curso).
+
+\textbf{Respuesta:} $P(F > 2.4)$ para $F \sim F(9, 11)$.
+
+\section{Ejercicio 7}
+Con varianzas iguales, $n_1 = n_2 = 10$, hallar $P\left( \frac{S_1^2}{S_2^2} < 0.6 \right)$.
+
+\textbf{Solución:}  
+$F = \frac{S_1^2}{S_2^2} \sim F(9, 9)$.  
+\[ P(F < 0.6) = P\left( \frac{1}{F} > \frac{1}{0.6} \right) = P(F > 1.6667), \]  
+ya que $1/F \sim F(9, 9)$. El valor exacto de $P(F > 1.6667)$ se consulta en la tabla F.
+
+\textbf{Respuesta:} $P(F < 0.6)$ para $F \sim F(9, 9)$.
+
+\section{Ejercicio 8}
+Dadas $n_1 = 16$, $n_2 = 20$, $\sigma_1^2 = \sigma_2^2 = 9$, calcular $P(0.8 < F < 1.5)$ con $F = \frac{S_1^2}{S_2^2}$.
+
+\textbf{Solución:}  
+$F \sim F(15, 19)$.  
+\[ P(0.8 < F < 1.5) = P(F < 1.5) - P(F < 0.8). \]  
+Usando una tabla F (valores aproximados), $P(F < 1.5) \approx 0.85$, $P(F < 0.8) \approx 0.20$, así que $P(0.8 < F < 1.5) \approx 0.65$.
+
+\textbf{Respuesta:} Aproximadamente 0.65.
+
+\section{Ejercicio 9}
+Con $p = 0.1$, $n_1 = n_2 = 100$, hallar $P(|\hat{p}_1 - \hat{p}_2| > 0.08)$.
+
+\textbf{Solución:}  
+La diferencia $\hat{p}_1 - \hat{p}_2 \sim N\left(0, \frac{p(1-p)}{n_1} + \frac{p(1-p)}{n_2}\right) = N(0, 2 \times \frac{0.1 \times 0.9}{100}) = N(0, 0.0018)$.  
+\[ P(|\hat{p}_1 - \hat{p}_2| > 0.08) = 2 P\left( Z > \frac{0.08}{\sqrt{0.0018}} \right) \approx 2 P(Z > 1.886) \approx 2 \times 0.0294 = 0.0588. \]
+
+\textbf{Respuesta:} Aproximadamente 0.0588.
+
+\section{Ejercicio 10}
+Con $p = 0.15$, $n_1 = 200$, $n_2 = 250$, calcular $P(\hat{p}_1 - \hat{p}_2 < -0.05)$.
+
+\textbf{Solución:}  
+$\hat{p}_1 - \hat{p}_2 \sim N\left(0, \frac{0.15 \times 0.85}{200} + \frac{0.15 \times 0.85}{250}\right) = N(0, 0.0011475)$.  
+\[ P(\hat{p}_1 - \hat{p}_2 < -0.05) = P\left( Z < \frac{-0.05}{\sqrt{0.0011475}} \right) \approx P(Z < -1.476) \approx 0.0699. \]
+
+\textbf{Respuesta:} Aproximadamente 0.0699.
+
+\section{Ejercicio 11}
+Con $p = 0.05$, $n_1 = n_2 = 120$, hallar $P(|\hat{p}_1 - \hat{p}_2| > 0.04)$.
+
+\textbf{Solución:}  
+$\hat{p}_1 - \hat{p}_2 \sim N\left(0, 2 \times \frac{0.05 \times 0.95}{120}\right) = N(0, 0.0007917)$.  
+\[ P(|\hat{p}_1 - \hat{p}_2| > 0.04) = 2 P\left( Z > \frac{0.04}{\sqrt{0.0007917}} \right) \approx 2 P(Z > 1.421) \approx 2 \times 0.0778 = 0.1556. \]
+
+\textbf{Respuesta:} Aproximadamente 0.1556.
+
+\section{Ejercicio 12}
+Con $n_1 = 250$, $x_1 = 190$, $n_2 = 300$, $x_2 = 207$, determinar $P(\hat{p}_1 - \hat{p}_2 \leq 0.20)$.
+
+\textbf{Solución:}  
+Estimamos $p_1 \approx \frac{190}{250} = 0.76$, $p_2 \approx \frac{207}{300} = 0.69$.  
+$\hat{p}_1 - \hat{p}_2 \sim N\left(0.76 - 0.69, \frac{0.76 \times 0.24}{250} + \frac{0.69 \times 0.31}{300}\right) = N(0.07, 0.0014426)$.  
+\[ P(\hat{p}_1 - \hat{p}_2 \leq 0.20) = P\left( Z \leq \frac{0.20 - 0.07}{\sqrt{0.0014426}} \right) \approx P(Z \leq 3.421) \approx 1. \]
+
+\textbf{Respuesta:} Aproximadamente 1.
+
+\end{document}
