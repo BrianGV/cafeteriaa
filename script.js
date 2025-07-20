@@ -599,3 +599,263 @@ function animateOnScroll() {
 window.addEventListener('load', () => {
     animateOnScroll();
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const cartIcon = document.getElementById('cart-icon');
+    const cartModal = document.getElementById('cart-modal');
+    const closeCart = document.getElementById('close-cart');
+    const cartCount = document.getElementById('cart-count');
+    const cartItems = document.getElementById('cart-items');
+    const cartEmpty = document.getElementById('cart-empty');
+    const cartSubtotal = document.getElementById('cart-subtotal');
+    const cartTotal = document.getElementById('cart-total');
+    const clearCartBtn = document.getElementById('clear-cart');
+    const checkoutBtn = document.getElementById('checkout-btn');
+    const themeToggle = document.getElementById('theme-toggle');
+    const whatsappFloat = document.getElementById('whatsapp-float');
+    const retryBtn = document.getElementById('retry-connection');
+    const offlineMessage = document.getElementById('offline-message');
+
+    let cart = [];
+    const shippingCost = 5.00;
+
+    mobileMenuBtn.addEventListener('click', function() {
+        const icon = mobileMenuBtn.querySelector('i');
+        if (mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.remove('hidden');
+            mobileMenu.classList.add('show');
+            icon.className = 'fa-solid fa-times';
+        } else {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('show');
+            icon.className = 'fa-solid fa-bars';
+        }
+    });
+
+    cartIcon.addEventListener('click', function() {
+        cartModal.classList.remove('hidden');
+        updateCartDisplay();
+    });
+
+    closeCart.addEventListener('click', function() {
+        cartModal.classList.add('hidden');
+    });
+
+    cartModal.addEventListener('click', function(e) {
+        if (e.target === cartModal) {
+            cartModal.classList.add('hidden');
+        }
+    });
+
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('.add-cart')) {
+            const productData = JSON.parse(e.target.closest('.add-cart').getAttribute('data-product'));
+            addToCart(productData);
+        }
+    });
+
+    clearCartBtn.addEventListener('click', function() {
+        cart = [];
+        updateCartCount();
+        updateCartDisplay();
+    });
+
+    checkoutBtn.addEventListener('click', function() {
+        if (cart.length > 0) {
+            alert('Redirigiendo al proceso de pago...');
+        }
+    });
+
+    themeToggle.addEventListener('click', function() {
+        document.body.classList.toggle('dark-theme');
+        const icon = themeToggle.querySelector('i');
+        if (document.body.classList.contains('dark-theme')) {
+            icon.className = 'fa-solid fa-sun';
+        } else {
+            icon.className = 'fa-solid fa-moon';
+        }
+    });
+
+    whatsappFloat.addEventListener('click', function() {
+        const phoneNumber = '51948738012';
+        let message = 'Hola! Me interesa hacer un pedido:\n\n';
+        
+        if (cart.length > 0) {
+            cart.forEach(item => {
+                message += `• ${item.name} x${item.quantity} - S/${(item.price * item.quantity).toFixed(2)}\n`;
+            });
+            message += `\nTotal: S/${calculateTotal().toFixed(2)}`;
+        } else {
+            message += 'Quisiera ver su carta de productos disponibles.';
+        }
+        
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
+    });
+
+    retryBtn.addEventListener('click', function() {
+        checkConnection();
+    });
+
+    function addToCart(product) {
+        const existingItem = cart.find(item => item.id === product.id);
+        
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cart.push({
+                ...product,
+                quantity: 1
+            });
+        }
+        
+        updateCartCount();
+        showAddedToCartMessage(product.name);
+    }
+
+    function removeFromCart(productId) {
+        cart = cart.filter(item => item.id !== productId);
+        updateCartCount();
+        updateCartDisplay();
+    }
+
+    function updateQuantity(productId, newQuantity) {
+        const item = cart.find(item => item.id === productId);
+        if (item) {
+            if (newQuantity <= 0) {
+                removeFromCart(productId);
+            } else {
+                item.quantity = newQuantity;
+                updateCartCount();
+                updateCartDisplay();
+            }
+        }
+    }
+
+    function updateCartCount() {
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        cartCount.textContent = totalItems;
+        
+        const displayCount = document.getElementById('cart-display-count');
+        if (displayCount) {
+            displayCount.textContent = `(${totalItems})`;
+        }
+    }
+
+    function updateCartDisplay() {
+        if (cart.length === 0) {
+            cartItems.style.display = 'none';
+            cartEmpty.style.display = 'block';
+        } else {
+            cartItems.style.display = 'block';
+            cartEmpty.style.display = 'none';
+            
+            cartItems.innerHTML = cart.map(item => `
+                <div class="flex items-center space-x-3 p-3 border rounded">
+                    <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded">
+                    <div class="flex-1">
+                        <h4 class="font-semibold text-sm">${item.name}</h4>
+                        <p class="text-coffee font-bold">S/${item.price.toFixed(2)}</p>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <button onclick="updateQuantity('${item.id}', ${item.quantity - 1})" 
+                                class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300">
+                            <i class="fa-solid fa-minus text-xs"></i>
+                        </button>
+                        <span class="w-8 text-center">${item.quantity}</span>
+                        <button onclick="updateQuantity('${item.id}', ${item.quantity + 1})" 
+                                class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300">
+                            <i class="fa-solid fa-plus text-xs"></i>
+                        </button>
+                    </div>
+                    <button onclick="removeFromCart('${item.id}')" 
+                            class="text-red-500 hover:text-red-700">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </div>
+            `).join('');
+        }
+        
+        updateCartSummary();
+    }
+
+    function updateCartSummary() {
+        const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        const total = cart.length > 0 ? subtotal + shippingCost : 0;
+        
+        cartSubtotal.textContent = `S/${subtotal.toFixed(2)}`;
+        cartTotal.textContent = `S/${total.toFixed(2)}`;
+    }
+
+    function calculateTotal() {
+        const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        return cart.length > 0 ? subtotal + shippingCost : 0;
+    }
+
+    function showAddedToCartMessage(productName) {
+        const message = document.createElement('div');
+        message.className = 'fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded shadow-lg z-50';
+        message.textContent = `${productName} agregado al carrito`;
+        
+        document.body.appendChild(message);
+        
+        setTimeout(() => {
+            message.remove();
+        }, 3000);
+    }
+
+    function checkConnection() {
+        const connectionText = document.getElementById('connection-text');
+        connectionText.textContent = 'Verificando conexión...';
+        
+        if (navigator.onLine) {
+            setTimeout(() => {
+                offlineMessage.classList.remove('show');
+                connectionText.textContent = 'Conexión restaurada';
+            }, 1000);
+        } else {
+            setTimeout(() => {
+                connectionText.textContent = 'Sin conexión a internet';
+            }, 1000);
+        }
+    }
+
+    window.addEventListener('online', function() {
+        offlineMessage.classList.remove('show');
+    });
+
+    window.addEventListener('offline', function() {
+        offlineMessage.classList.add('show');
+    });
+
+    window.updateQuantity = updateQuantity;
+    window.removeFromCart = removeFromCart;
+});
+
+function buscarBebida() {
+    const busqueda = document.getElementById('busqueda').value.toLowerCase();
+    const busquedaMobile = document.getElementById('busqueda-mobile');
+    
+    if (busquedaMobile && busquedaMobile.value) {
+        busqueda = busquedaMobile.value.toLowerCase();
+    }
+    
+    const paginas = {
+        'moca helado': 'mocahelado.html',
+        'americano': 'americano.html',
+        'expreso': 'expreso.html',
+        'capuchino': 'capuchino.html',
+        'frapuccino': 'frapuccino.html',
+        'afogato': 'afogato.html'
+    };
+    
+    if (paginas[busqueda]) {
+        window.location.href = paginas[busqueda];
+        return false;
+    } else {
+        alert('Producto no encontrado. Intenta con: Moca Helado, Americano, Expreso, Capuchino, Frapuccino o Afogato.');
+        return false;
+    }
+}

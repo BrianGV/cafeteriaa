@@ -5,6 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cafeteria</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'coffee': '#8B4513',
+              'coffee-light': '#A0522D',
+              'coffee-dark': '#654321'
+            }
+          }
+        }
+      }
+    </script>
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
     <link
@@ -13,7 +27,7 @@
       href="img/png-clipart-logo-cappuccino-cafe-coffee-ristretto-coffee-cafe-logo-thumbnail.png"
     />
   </head>
-  <body>
+  <body class="bg-gray-50">
     
     <div id="offline-message" class="offline-overlay">
       <div class="offline-content">
@@ -40,404 +54,492 @@
       </div>
     </div>
 
-    <!-- MODAL DEL CARRITO DE COMPRAS -->
-    <div id="cart-modal" class="cart-modal">
-      <div class="cart-modal-content">
-        <div class="cart-header">
-          <h2><i class="fa-solid fa-shopping-cart"></i> Mi Carrito</h2>
-          <button id="close-cart" class="close-cart-btn">
-            <i class="fa-solid fa-times"></i>
-          </button>
-        </div>
-        
-        <div class="cart-body">
-          <div id="cart-items" class="cart-items">
-            <!-- Los productos se agregarán aquí dinámicamente -->
+    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+      <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-md max-h-screen overflow-y-auto">
+          <div class="flex items-center justify-between p-4 border-b">
+            <h2 class="text-xl font-bold text-gray-800">
+              <i class="fa-solid fa-shopping-cart mr-2"></i> Mi Carrito
+            </h2>
+            <button id="close-cart" class="text-gray-500 hover:text-gray-700">
+              <i class="fa-solid fa-times text-xl"></i>
+            </button>
           </div>
           
-          <div id="cart-empty" class="cart-empty">
-            <i class="fa-solid fa-shopping-cart"></i>
-            <h3>Tu carrito está vacío</h3>
-            <p>Agrega algunos productos deliciosos para comenzar</p>
-          </div>
-        </div>
-        
-        <div class="cart-footer">
-          <div class="cart-summary">
-            <div class="summary-row">
-              <span>Subtotal:</span>
-              <span id="cart-subtotal">S/0.00</span>
+          <div class="p-4">
+            <div id="cart-items" class="space-y-3 mb-4">
             </div>
-            <div class="summary-row">
-              <span>Envío:</span>
-              <span id="cart-shipping">S/5.00</span>
-            </div>
-            <div class="summary-row total">
-              <span>Total:</span>
-              <span id="cart-total">S/0.00</span>
+            
+            <div id="cart-empty" class="text-center py-8">
+              <i class="fa-solid fa-shopping-cart text-4xl text-gray-400 mb-4"></i>
+              <h3 class="text-lg font-semibold text-gray-600 mb-2">Tu carrito está vacío</h3>
+              <p class="text-gray-500">Agrega algunos productos deliciosos para comenzar</p>
             </div>
           </div>
           
-          <div class="cart-actions">
-            <button id="clear-cart" class="btn-secondary">
-              <i class="fa-solid fa-trash"></i>
-              Vaciar Carrito
-            </button>
-            <button id="checkout-btn" class="btn-primary">
-              <i class="fa-solid fa-credit-card"></i>
-              Proceder al Pago
-            </button>
+          <div class="border-t p-4">
+            <div class="space-y-2 mb-4">
+              <div class="flex justify-between">
+                <span>Subtotal:</span>
+                <span id="cart-subtotal">S/0.00</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Envío:</span>
+                <span id="cart-shipping">S/5.00</span>
+              </div>
+              <div class="flex justify-between font-bold text-lg border-t pt-2">
+                <span>Total:</span>
+                <span id="cart-total">S/0.00</span>
+              </div>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row gap-2">
+              <button id="clear-cart" class="flex-1 bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 transition-colors">
+                <i class="fa-solid fa-trash mr-2"></i>
+                Vaciar
+              </button>
+              <button id="checkout-btn" class="flex-1 bg-coffee text-white px-4 py-2 rounded hover:bg-coffee-dark transition-colors">
+                <i class="fa-solid fa-credit-card mr-2"></i>
+                Pagar
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <header>
-      <div class="container-hero">
-        <div class="container hero">
-          <div class="customer-support">
-            <i class="fa-solid fa-headset"></i>
-            <div class="content-customer-support">
-              <span class="text">Soporte al cliente</span>
-              <span class="number">948 738 012</span>
-            </div>
+    <header class="bg-white shadow-md">
+      <div class="bg-coffee text-white py-2">
+        <div class="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center text-sm">
+          <div class="flex items-center mb-2 sm:mb-0">
+            <i class="fa-solid fa-headset mr-2"></i>
+            <span>Soporte: 948 738 012</span>
           </div>
-          <div class="container-logo">
-            <i class="fa-solid fa-mug-hot"></i>
-            <h1 class="logo"><a href="/">Cafeteria</a></h1>
-          </div>
-          <div class="container-user">
-            <i class="fa-solid fa-user"></i>
-            <div class="cart-icon-container" id="cart-icon">
-              <i class="fa-solid fa-cart-shopping"></i>
-              <span id="cart-count" class="cart-count">0</span>
-              <div class="content-shopping-cart">
-                <span class="text">Carrito</span>
-                <span class="number" id="cart-display-count">(0)</span>
-              </div>
+          <div class="flex items-center">
+            <i class="fa-solid fa-user mr-4"></i>
+            <div class="flex items-center cursor-pointer" id="cart-icon">
+              <i class="fa-solid fa-cart-shopping mr-2"></i>
+              <span>Carrito (<span id="cart-count">0</span>)</span>
             </div>
           </div>
         </div>
       </div>
-      <div class="container-navbar">
-        <nav class="navbar container">
-          <i class="fa-solid fa-bars"></i>
-          <ul class="menu">
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="mocahelado.html">Moca Helado</a></li>
-            <li><a href="americano.html">Americano</a></li>
-            <li><a href="expreso.html">Expreso</a></li>
-            <li><a href="capuchino.html">Capuchino</a></li>
-            <li><a href="frapuccino.html">Frapuccino</a></li>
-            <li><a href="afogato.html">Afogato</a></li>
-            <li><a href="conocenos.html">Conócenos</a></li>
-            <li><a href="registro.html">Regístrate</a></li>
-          </ul>
 
-          <form class="search-form" onsubmit="return buscarBebida()">
-            <input
-              type="search"
-              id="busqueda"
-              placeholder="Buscar..."
-              list="BebidasDisponibles"
-            />
-            <datalist id="BebidasDisponibles">
-              <option value="Moca Helado"></option>
-              <option value="Americano"></option>
-              <option value="Expreso"></option>
-              <option value="Capuchino"></option>
-              <option value="Frapuccino"></option>
-              <option value="Afogato"></option>
-            </datalist>
+      <nav class="container mx-auto px-4 py-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            <i class="fa-solid fa-mug-hot text-coffee text-2xl mr-2"></i>
+            <h1 class="text-2xl font-bold text-coffee">
+              <a href="/">Cafeteria</a>
+            </h1>
+          </div>
 
-            <button type="submit" class="btn-search">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-          </form>
-        </nav>
-      </div>
+          <button id="mobile-menu-btn" class="lg:hidden text-2xl text-coffee">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+
+          <div id="desktop-menu" class="hidden lg:flex items-center space-x-6">
+            <ul class="flex space-x-6">
+              <li><a href="index.html" class="text-gray-700 hover:text-coffee transition-colors">Inicio</a></li>
+              <li><a href="mocahelado.html" class="text-gray-700 hover:text-coffee transition-colors">Moca Helado</a></li>
+              <li><a href="americano.html" class="text-gray-700 hover:text-coffee transition-colors">Americano</a></li>
+              <li><a href="expreso.html" class="text-gray-700 hover:text-coffee transition-colors">Expreso</a></li>
+              <li><a href="capuchino.html" class="text-gray-700 hover:text-coffee transition-colors">Capuchino</a></li>
+              <li><a href="frapuccino.html" class="text-gray-700 hover:text-coffee transition-colors">Frapuccino</a></li>
+              <li><a href="afogato.html" class="text-gray-700 hover:text-coffee transition-colors">Afogato</a></li>
+              <li><a href="conocenos.html" class="text-gray-700 hover:text-coffee transition-colors">Conócenos</a></li>
+              <li><a href="registro.html" class="text-gray-700 hover:text-coffee transition-colors">Regístrate</a></li>
+            </ul>
+
+            <form class="flex items-center" onsubmit="return buscarBebida()">
+              <input
+                type="search"
+                id="busqueda"
+                placeholder="Buscar..."
+                list="BebidasDisponibles"
+                class="px-3 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-coffee"
+              />
+              <datalist id="BebidasDisponibles">
+                <option value="Moca Helado"></option>
+                <option value="Americano"></option>
+                <option value="Expreso"></option>
+                <option value="Capuchino"></option>
+                <option value="Frapuccino"></option>
+                <option value="Afogato"></option>
+              </datalist>
+              <button type="submit" class="bg-coffee text-white px-3 py-2 rounded-r-md hover:bg-coffee-dark">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div id="mobile-menu" class="lg:hidden hidden mt-4 pb-4 border-t">
+          <div class="space-y-4 mt-4">
+            <form class="flex mb-4" onsubmit="return buscarBebida()">
+              <input
+                type="search"
+                id="busqueda-mobile"
+                placeholder="Buscar..."
+                list="BebidasDisponibles"
+                class="flex-1 px-3 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-coffee"
+              />
+              <button type="submit" class="bg-coffee text-white px-3 py-2 rounded-r-md">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </form>
+            
+            <ul class="space-y-3">
+              <li><a href="index.html" class="block py-2 text-gray-700 hover:text-coffee border-b border-gray-200">Inicio</a></li>
+              <li><a href="mocahelado.html" class="block py-2 text-gray-700 hover:text-coffee border-b border-gray-200">Moca Helado</a></li>
+              <li><a href="americano.html" class="block py-2 text-gray-700 hover:text-coffee border-b border-gray-200">Americano</a></li>
+              <li><a href="expreso.html" class="block py-2 text-gray-700 hover:text-coffee border-b border-gray-200">Expreso</a></li>
+              <li><a href="capuchino.html" class="block py-2 text-gray-700 hover:text-coffee border-b border-gray-200">Capuchino</a></li>
+              <li><a href="frapuccino.html" class="block py-2 text-gray-700 hover:text-coffee border-b border-gray-200">Frapuccino</a></li>
+              <li><a href="afogato.html" class="block py-2 text-gray-700 hover:text-coffee border-b border-gray-200">Afogato</a></li>
+              <li><a href="conocenos.html" class="block py-2 text-gray-700 hover:text-coffee border-b border-gray-200">Conócenos</a></li>
+              <li><a href="registro.html" class="block py-2 text-gray-700 hover:text-coffee">Regístrate</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </header>
     
-    <div id="theme-toggle" class="theme-toggle">
-      <div class="theme-tooltip">Cambiar tema</div>
+    <div id="theme-toggle" class="fixed bottom-20 right-4 bg-coffee text-white p-3 rounded-full shadow-lg cursor-pointer hover:bg-coffee-dark transition-colors z-40">
+      <div class="absolute -top-10 -left-16 bg-gray-800 text-white px-2 py-1 rounded text-sm opacity-0 hover:opacity-100 transition-opacity whitespace-nowrap">
+        Cambiar tema
+      </div>
       <i class="fa-solid fa-moon"></i>
     </div>
 
-    <div id="whatsapp-float" class="whatsapp-float">
-      <div class="whatsapp-tooltip">¡Haz tu pedido aquí!</div>
-      <i class="fab fa-whatsapp"></i>
+    <div id="whatsapp-float" class="fixed bottom-4 right-4 bg-green-500 text-white p-3 rounded-full shadow-lg cursor-pointer hover:bg-green-600 transition-colors z-40">
+      <div class="absolute -top-10 -left-20 bg-gray-800 text-white px-2 py-1 rounded text-sm opacity-0 hover:opacity-100 transition-opacity whitespace-nowrap">
+        ¡Haz tu pedido aquí!
+      </div>
+      <i class="fab fa-whatsapp text-xl"></i>
     </div>
 
-    <section class="banner">
-      <div class="content-banner">
-        <p>Café Delicioso</p>
-        <h2>100% Natural <br />Café Fresco</h2>
-        <a href="#">Comprar ahora</a>
+    <section class="bg-gradient-to-r from-coffee to-coffee-light text-white py-20 px-4">
+      <div class="container mx-auto text-center">
+        <p class="text-lg mb-2 opacity-90">Café Delicioso</p>
+        <h2 class="text-4xl md:text-6xl font-bold mb-6">100% Natural<br />Café Fresco</h2>
+        <a href="#" class="inline-block bg-white text-coffee px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+          Comprar ahora
+        </a>
       </div>
     </section>
-    <main class="main-content">
-      <section class="container container-features">
-        <div class="card-feature">
-          <i class="fa-solid fa-truck-fast"></i>
-          <div class="feature-content">
-            <span>Envío gratuito a todo Trujillo</span>
-            <p>En pedido superior a S/50</p>
+
+    <main class="py-8">
+      <section class="container mx-auto px-4 mb-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-white p-6 rounded-lg shadow-md text-center">
+            <i class="fa-solid fa-truck-fast text-3xl text-coffee mb-4"></i>
+            <h3 class="font-semibold mb-2">Envío gratuito a todo Trujillo</h3>
+            <p class="text-gray-600 text-sm">En pedido superior a S/50</p>
           </div>
-        </div>
-        <div class="card-feature">
-          <i class="fa-solid fa-wallet"></i>
-          <div class="feature-content">
-            <span>Contrareembolso</span>
-            <p>100% garantía de devolución de dinero</p>
+          <div class="bg-white p-6 rounded-lg shadow-md text-center">
+            <i class="fa-solid fa-wallet text-3xl text-coffee mb-4"></i>
+            <h3 class="font-semibold mb-2">Contrareembolso</h3>
+            <p class="text-gray-600 text-sm">100% garantía de devolución de dinero</p>
           </div>
-        </div>
-        <div class="card-feature">
-          <i class="fa-solid fa-credit-card"></i>
-          <div class="feature-content">
-            <span>Obten nuestra tarjeta ExpressoPass+</span>
-            <p>Para recibir descuentos y regalos semanales</p>
+          <div class="bg-white p-6 rounded-lg shadow-md text-center">
+            <i class="fa-solid fa-credit-card text-3xl text-coffee mb-4"></i>
+            <h3 class="font-semibold mb-2">ExpressoPass+</h3>
+            <p class="text-gray-600 text-sm">Descuentos y regalos semanales</p>
           </div>
-        </div>
-        <div class="card-feature">
-          <i class="fa-solid fa-headset"></i>
-          <div class="feature-content">
-            <span>Servicio al cliente 24/7</span>
-            <p>LLámanos 24/7 al 948 738 012</p>
+          <div class="bg-white p-6 rounded-lg shadow-md text-center">
+            <i class="fa-solid fa-headset text-3xl text-coffee mb-4"></i>
+            <h3 class="font-semibold mb-2">Servicio 24/7</h3>
+            <p class="text-gray-600 text-sm">Llámanos al 948 738 012</p>
           </div>
         </div>
       </section>
-      <section class="container top-categories">
-        <h1 class="heading-1">Mejores Categorias</h1>
-        <div class="container-categories">
-          <div class="card-category categorie-moca">
-            <p>Café Moca</p>
-            <a href="mocahelado.html"><span>Ver más</span></a>
-          </div>
 
-          <div class="card-category categorie-expresso">
-            <p>Expreso Americano</p>
-            <a href="expreso.html"><span>Ver más</span></a>
-          </div>
-
-          <div class="card-category categorie-capuccino">
-            <p>Capuccino</p>
-            <a href="capuchino.html"><span>Ver más</span></a>
-          </div>
-        </div>
-      </section>
-      <section class="container top-products">
-        <h1 class="heading-1">Mejores Productos</h1>
-        <div class="container-options">
-          <span>Destacados</span>
-          <span>Más recientes</span>
-          <span>Mejores Vendidos</span>
-        </div>
-        <div class="container-products">
-          <div class="card-product">
-            <div class="container-img">
-              <img src="img/cafe-irish.jpg" alt="Cafe Irish" />
-              <span class="discount">-12%</span>
-              <div class="button-group">
-                <span>
-                  <i class="fa-solid fa-eye"></i>
-                </span>
-                <span>
-                  <i class="fa-regular fa-heart"></i>
-                </span>
-                <span>
-                  <i class="fa-solid fa-code-compare"></i>
-                </span>
+      <section class="container mx-auto px-4 mb-12">
+        <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">Mejores Categorías</h1>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="relative bg-coffee-light rounded-lg overflow-hidden h-64 group cursor-pointer">
+            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+              <div class="text-center text-white">
+                <p class="text-2xl font-bold mb-4">Café Moca</p>
+                <a href="mocahelado.html" class="bg-white text-coffee px-6 py-2 rounded-full hover:bg-gray-100 transition-colors">
+                  Ver más
+                </a>
               </div>
             </div>
-            <div class="content-card-product">
-              <div class="stars">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-                <span class="number">(128)</span>
+          </div>
+          <div class="relative bg-coffee rounded-lg overflow-hidden h-64 group cursor-pointer">
+            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+              <div class="text-center text-white">
+                <p class="text-2xl font-bold mb-4">Expreso Americano</p>
+                <a href="expreso.html" class="bg-white text-coffee px-6 py-2 rounded-full hover:bg-gray-100 transition-colors">
+                  Ver más
+                </a>
               </div>
-              <h3>Café Irish</h3>
-              <span class="add-cart" data-product='{"name": "Café Irish", "price": 14.50, "oldPrice": 16.50, "image": "img/cafe-irish.jpg", "id": "cafe-irish"}'>
-                <i class="fa-solid fa-basket-shopping"></i>
+            </div>
+          </div>
+          <div class="relative bg-coffee-dark rounded-lg overflow-hidden h-64 group cursor-pointer">
+            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+              <div class="text-center text-white">
+                <p class="text-2xl font-bold mb-4">Capuccino</p>
+                <a href="capuchino.html" class="bg-white text-coffee px-6 py-2 rounded-full hover:bg-gray-100 transition-colors">
+                  Ver más
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container mx-auto px-4 mb-12">
+        <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">Mejores Productos</h1>
+        <div class="flex justify-center mb-8">
+          <div class="flex space-x-4 bg-gray-100 p-1 rounded-full">
+            <span class="px-4 py-2 bg-coffee text-white rounded-full cursor-pointer">Destacados</span>
+            <span class="px-4 py-2 hover:bg-gray-200 rounded-full cursor-pointer">Más recientes</span>
+            <span class="px-4 py-2 hover:bg-gray-200 rounded-full cursor-pointer">Mejores Vendidos</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow group">
+            <div class="relative">
+              <img src="img/cafe-irish.jpg" alt="Cafe Irish" class="w-full h-48 object-cover" />
+              <span class="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded-full text-sm">-12%</span>
+              <div class="absolute top-2 right-2 flex flex-col space-y-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                <button class="bg-white p-2 rounded-full shadow-md hover:bg-gray-100">
+                  <i class="fa-solid fa-eye text-gray-600"></i>
+                </button>
+                <button class="bg-white p-2 rounded-full shadow-md hover:bg-gray-100">
+                  <i class="fa-regular fa-heart text-gray-600"></i>
+                </button>
+                <button class="bg-white p-2 rounded-full shadow-md hover:bg-gray-100">
+                  <i class="fa-solid fa-code-compare text-gray-600"></i>
+                </button>
+              </div>
+            </div>
+            <div class="p-4">
+              <div class="flex items-center mb-2">
+                <div class="flex text-yellow-400 text-sm">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                </div>
+                <span class="text-gray-500 text-sm ml-1">(128)</span>
+              </div>
+              <h3 class="font-semibold text-gray-800 mb-3">Café Irish</h3>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                  <span class="text-lg font-bold text-coffee">S/14.50</span>
+                  <span class="text-sm text-gray-500 line-through">S/16.50</span>
+                </div>
+                <button class="add-cart bg-coffee text-white p-2 rounded-full hover:bg-coffee-dark transition-colors" 
+                        data-product='{"name": "Café Irish", "price": 14.50, "oldPrice": 16.50, "image": "img/cafe-irish.jpg", "id": "cafe-irish"}'>
+                  <i class="fa-solid fa-basket-shopping"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow group">
+            <div class="relative">
+              <img src="img/cafe-ingles.jpg" alt="Cafe Inglés" class="w-full h-48 object-cover" />
+              <span class="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded-full text-sm">-15%</span>
+              <div class="absolute top-2 right-2 flex flex-col space-y-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                <button class="bg-white p-2 rounded-full shadow-md hover:bg-gray-100">
+                  <i class="fa-solid fa-eye text-gray-600"></i>
+                </button>
+                <button class="bg-white p-2 rounded-full shadow-md hover:bg-gray-100">
+                  <i class="fa-regular fa-heart text-gray-600"></i>
+                </button>
+                <button class="bg-white p-2 rounded-full shadow-md hover:bg-gray-100">
+                  <i class="fa-solid fa-code-compare text-gray-600"></i>
+                </button>
+              </div>
+            </div>
+            <div class="p-4">
+              <div class="flex items-center mb-2">
+                <div class="flex text-yellow-400 text-sm">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                </div>
+              </div>
+              <h3 class="font-semibold text-gray-800 mb-3">Cafe Inglés</h3>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                  <span class="text-lg font-bold text-coffee">S/15.70</span>
+                  <span class="text-sm text-gray-500 line-through">S/18.50</span>
+                </div>
+                <button class="add-cart bg-coffee text-white p-2 rounded-full hover:bg-coffee-dark transition-colors" 
+                        data-product='{"name": "Cafe Inglés", "price": 15.70, "oldPrice": 18.50, "image": "img/cafe-ingles.jpg", "id": "cafe-ingles"}'>
+                  <i class="fa-solid fa-basket-shopping"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow group">
+            <div class="relative">
+              <img src="img/cafe-viena.jpg" alt="Cafe Viena" class="w-full h-48 object-cover" />
+              <span class="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded-full text-sm">-10%</span>
+              <div class="absolute top-2 right-2 flex flex-col space-y-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                <button class="bg-white p-2 rounded-full shadow-md hover:bg-gray-100">
+                  <i class="fa-solid fa-eye text-gray-600"></i>
+                </button>
+                <button class="bg-white p-2 rounded-full shadow-md hover:bg-gray-100">
+                  <i class="fa-regular fa-heart text-gray-600"></i>
+                </button>
+                <button class="bg-white p-2 rounded-full shadow-md hover:bg-gray-100">
+                  <i class="fa-solid fa-code-compare text-gray-600"></i>
+                </button>
+              </div>
+            </div>
+            <div class="p-4">
+              <div class="flex items-center mb-2">
+                <div class="flex text-yellow-400 text-sm">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+              </div>
+              <h3 class="font-semibold text-gray-800 mb-3">Cafe Viena</h3>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                  <span class="text-lg font-bold text-coffee">S/13.85</span>
+                  <span class="text-sm text-gray-500 line-through">S/15.50</span>
+                </div>
+                <button class="add-cart bg-coffee text-white p-2 rounded-full hover:bg-coffee-dark transition-colors" 
+                        data-product='{"name": "Cafe Viena", "price": 13.85, "oldPrice": 15.50, "image": "img/cafe-viena.jpg", "id": "cafe-viena"}'>
+                  <i class="fa-solid fa-basket-shopping"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow group">
+            <div class="relative">
+              <img src="img/cafe-liqueurs.jpg" alt="Cafe Liqueurs" class="w-full h-48 object-cover" />
+              <div class="absolute top-2 right-2 flex flex-col space-y-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                <button class="bg-white p-2 rounded-full shadow-md hover:bg-gray-100">
+                  <i class="fa-solid fa-eye text-gray-600"></i>
+                </button>
+                <button class="bg-white p-2 rounded-full shadow-md hover:bg-gray-100">
+                  <i class="fa-regular fa-heart text-gray-600"></i>
+                </button>
+                <button class="bg-white p-2 rounded-full shadow-md hover:bg-gray-100">
+                  <i class="fa-solid fa-code-compare text-gray-600"></i>
+                </button>
+              </div>
+            </div>
+            <div class="p-4">
+              <div class="flex items-center mb-2">
+                <div class="flex text-yellow-400 text-sm">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-regular fa-star"></i>
+                </div>
+              </div>
+              <h3 class="font-semibold text-gray-800 mb-3">Cafe Liqueurs</h3>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                  <span class="text-lg font-bold text-coffee">S/15.60</span>
+                </div>
+                <button class="add-cart bg-coffee text-white p-2 rounded-full hover:bg-coffee-dark transition-colors" 
+                        data-product='{"name": "Cafe Liqueurs", "price": 15.60, "oldPrice": null, "image": "img/cafe-liqueurs.jpg", "id": "cafe-liqueurs"}'>
+                  <i class="fa-solid fa-basket-shopping"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div>
+            <p class="text-lg font-semibold mb-4">Información de Contacto</p>
+            <ul class="space-y-2 text-sm">
+              <li>Dirección: Calle Las Esmeraldas 528 Urb. Santa Inés</li>
+              <li>Teléfono: +51 948 738 012</li>
+              <li>Email: soportecafeteria12@gmail.com</li>
+            </ul>
+            <div class="flex space-x-3 mt-4">
+              <span class="bg-blue-600 p-2 rounded cursor-pointer hover:bg-blue-700">
+                <i class="fa-brands fa-facebook-f"></i>
               </span>
-              <p class="price">S/14.50 <span>S/16.50</span></p>
+              <span class="bg-blue-400 p-2 rounded cursor-pointer hover:bg-blue-500">
+                <i class="fa-brands fa-twitter"></i>
+              </span>
+              <span class="bg-red-600 p-2 rounded cursor-pointer hover:bg-red-700">
+                <i class="fa-brands fa-youtube"></i>
+              </span>
+              <span class="bg-red-500 p-2 rounded cursor-pointer hover:bg-red-600">
+                <i class="fa-brands fa-pinterest-p"></i>
+              </span>
+              <span class="bg-pink-600 p-2 rounded cursor-pointer hover:bg-pink-700">
+                <i class="fa-brands fa-instagram"></i>
+              </span>
             </div>
           </div>
-          <div class="card-product">
-						<div class="container-img">
-							<img
-								src="img/cafe-ingles.jpg"
-								alt="Cafe incafe-ingles.jpg"
-							/>
-							<span class="discount">-15%</span>
-							<div class="button-group">
-								<span>
-									<i class="fa-regular fa-eye"></i>
-								</span>
-								<span>
-									<i class="fa-regular fa-heart"></i>
-								</span>
-								<span>
-									<i class="fa-solid fa-code-compare"></i>
-								</span>
-							</div>
-						</div>
-						<div class="content-card-product">
-							<div class="stars">
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-regular fa-star"></i>
-								<i class="fa-regular fa-star"></i>
-							</div>
-							<h3>Cafe Inglés</h3>
-							<span class="add-cart" data-product='{"name": "Cafe Inglés", "price": 15.70, "oldPrice": 18.50, "image": "img/cafe-ingles.jpg", "id": "cafe-ingles"}'>
-								<i class="fa-solid fa-basket-shopping"></i>
-							</span>
-							<p class="price">S/15.70 <span>S/18.50</span></p>
-						</div>
-					</div>
-					<div class="card-product">
-						<div class="container-img">
-							<img src="img/cafe-viena.jpg" alt="Cafe Viena" />
-							<span class="discount">-10%</span>
-							<div class="button-group">
-								<span>
-									<i class="fa-regular fa-eye"></i>
-								</span>
-								<span>
-									<i class="fa-regular fa-heart"></i>
-								</span>
-								<span>
-									<i class="fa-solid fa-code-compare"></i>
-								</span>
-							</div>
-						</div>
-						<div class="content-card-product">
-							<div class="stars">
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-							</div>
-							<h3>Cafe Viena</h3>
-							<span class="add-cart" data-product='{"name": "Cafe Viena", "price": 13.85, "oldPrice": 15.50, "image": "img/cafe-viena.jpg", "id": "cafe-viena"}'>
-								<i class="fa-solid fa-basket-shopping"></i>
-							</span>
-							<p class="price">S/13.85 <span>S/15.50</span></p>
-						</div>
-					</div>
-					<div class="card-product">
-						<div class="container-img">
-							<img src="img/cafe-liqueurs.jpg" alt="Cafe Liqueurs" />
-							<div class="button-group">
-								<span>
-									<i class="fa-regular fa-eye"></i>
-								</span>
-								<span>
-									<i class="fa-regular fa-heart"></i>
-								</span>
-								<span>
-									<i class="fa-solid fa-code-compare"></i>
-								</span>
-							</div>
-						</div>
-						<div class="content-card-product">
-							<div class="stars">
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-regular fa-star"></i>
-							</div>
-							<h3>Cafe Liqueurs</h3>
-							<span class="add-cart" data-product='{"name": "Cafe Liqueurs", "price": 15.60, "oldPrice": null, "image": "img/cafe-liqueurs.jpg", "id": "cafe-liqueurs"}'>
-								<i class="fa-solid fa-basket-shopping"></i>
-							</span>
-							<p class="price">S/15.60</p>
-						</div>
-					</div>
-				</div>
-			</section>
-		<footer class="footer">
-			<div class="container container-footer">
-				<div class="menu-footer">
-					<div class="contact-info">
-						<p class="title-footer">Información de Contacto</p>
-						<ul>
-							<li>
-								Dirección: Calle Las Esmeraldas 528 Urb. Santa Inés
-							</li>
-							<li>Teléfono: +51 948 738 012</li>
-							<li>Email: soportecafeteria12@gmail.com</li>
-						</ul>
-						<div class="social-icons">
-							<span class="facebook">
-								<i class="fa-brands fa-facebook-f"></i>
-							</span>
-							<span class="twitter">
-								<i class="fa-brands fa-twitter"></i>
-							</span>
-							<span class="youtube">
-								<i class="fa-brands fa-youtube"></i>
-							</span>
-							<span class="pinterest">
-								<i class="fa-brands fa-pinterest-p"></i>
-							</span>
-							<span class="instagram">
-								<i class="fa-brands fa-instagram"></i>
-							</span>
-						</div>
-					</div>
 
-					<div class="information">
-						<p class="title-footer">Información</p>
-						<ul>
-							<li><a href="#">Acerca de Nosotros</a></li>
-							<li><a href="#">Información Delivery</a></li>
-							<li><a href="#">Politicas de Privacidad</a></li>
-							<li><a href="#">Términos y condiciones</a></li>
-							<li><a href="#">Contactános</a></li>
-						</ul>
-					</div>
+          <div>
+            <p class="text-lg font-semibold mb-4">Información</p>
+            <ul class="space-y-2 text-sm">
+              <li><a href="#" class="hover:text-coffee transition-colors">Acerca de Nosotros</a></li>
+              <li><a href="#" class="hover:text-coffee transition-colors">Información Delivery</a></li>
+              <li><a href="#" class="hover:text-coffee transition-colors">Políticas de Privacidad</a></li>
+              <li><a href="#" class="hover:text-coffee transition-colors">Términos y condiciones</a></li>
+              <li><a href="#" class="hover:text-coffee transition-colors">Contáctanos</a></li>
+            </ul>
+          </div>
 
-					<div class="my-account">
-						<p class="title-footer">Mi cuenta</p>
+          <div>
+            <p class="text-lg font-semibold mb-4">Mi cuenta</p>
+            <ul class="space-y-2 text-sm">
+              <li><a href="#" class="hover:text-coffee transition-colors">Mi cuenta</a></li>
+              <li><a href="#" class="hover:text-coffee transition-colors">Historial de órdenes</a></li>
+              <li><a href="#" class="hover:text-coffee transition-colors">Lista de deseos</a></li>
+              <li><a href="#" class="hover:text-coffee transition-colors">Boletín</a></li>
+              <li><a href="#" class="hover:text-coffee transition-colors">Reembolsos</a></li>
+            </ul>
+          </div>
 
-						<ul>
-							<li><a href="#">Mi cuenta</a></li>
-							<li><a href="#">Historial de ordenes</a></li>
-							<li><a href="#">Lista de deseos</a></li>
-							<li><a href="#">Boletín</a></li>
-							<li><a href="#">Reembolsos</a></li>
-						</ul>
-					</div>
+          <div>
+            <p class="text-lg font-semibold mb-4">Boletín informativo</p>
+            <div class="space-y-4">
+              <p class="text-sm">
+                Suscríbete a nuestros boletines ahora y mantente al día con nuevas colecciones y ofertas exclusivas.
+              </p>
+              <div class="flex">
+                <input type="email" placeholder="Ingresa el correo aquí..." 
+                       class="flex-1 px-3 py-2 text-gray-800 rounded-l-md focus:outline-none focus:ring-2 focus:ring-coffee">
+                <button class="bg-coffee px-4 py-2 rounded-r-md hover:bg-coffee-dark transition-colors">
+                  Suscríbete
+                </button>
+              </div>
+            </div>
+          </div
+        </div>
 
-					<div class="newsletter">
-						<p class="title-footer">Boletín informativo</p>
-
-						<div class="content">
-							<p>
-								Suscríbete a nuestros boletines ahora y mantente al
-								día con nuevas colecciones y ofertas exclusivas.
-							</p>
-							<input type="email" placeholder="Ingresa el correo aquí...">
-							<button>Suscríbete</button>
-						</div>
-					</div>
-				</div>
-
-				<div class="copyright">
-					<p>
-						Desarrollado por Brian González &copy; 2025
-					</p>
-					<img src="img/payment.png" alt="Pagos">
-				</div>
-			</div>
-		</footer>
+        <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <p class="text-sm mb-4 md:mb-0">
+            Desarrollado por Brian González &copy; 2025
+          </p>
+          <img src="img/payment.png" alt="Pagos" class="h-8">
+        </div>
+      </div>
+    </footer>
 
     <script src="https://kit.fontawesome.com/a50b3a1626.js" crossorigin="anonymous"></script>
   </body>
