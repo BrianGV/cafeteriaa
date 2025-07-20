@@ -859,3 +859,133 @@ function buscarBebida() {
         return false;
     }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = mobileMenuBtn.querySelector('i');
+    
+    mobileMenuBtn.addEventListener('click', function() {
+        if (mobileMenu.classList.contains('show')) {
+            mobileMenu.classList.remove('show');
+            menuIcon.classList.remove('fa-times');
+            menuIcon.classList.add('fa-bars');
+        } else {
+            mobileMenu.classList.add('show');
+            menuIcon.classList.remove('fa-bars');
+            menuIcon.classList.add('fa-times');
+        }
+    });
+
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('show');
+            menuIcon.classList.remove('fa-times');
+            menuIcon.classList.add('fa-bars');
+        });
+    });
+
+    window.addEventListener('resize', function() {
+        if (window.innerWidth >= 1024) {
+            mobileMenu.classList.remove('show');
+            menuIcon.classList.remove('fa-times');
+            menuIcon.classList.add('fa-bars');
+        }
+    });
+});
+
+document.getElementById('whatsapp-float').addEventListener('click', function() {
+    const mensaje = encodeURIComponent('¡Hola! Me gustaría hacer un pedido desde su página web.');
+    const numero = '51948738012';
+    const url = `https://wa.me/${numero}?text=${mensaje}`;
+    window.open(url, '_blank');
+});
+
+function animateOnScroll() {
+    const elements = document.querySelectorAll('.bg-white, .grid > div');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in');
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    elements.forEach(el => observer.observe(el));
+}
+
+function buscarBebida() {
+    const searchDesktop = document.getElementById('busqueda');
+    const searchMobile = document.getElementById('busqueda-mobile');
+    const query = searchDesktop?.value || searchMobile?.value;
+    
+    if (!query.trim()) {
+        alert('Por favor ingresa un término de búsqueda');
+        return false;
+    }
+    
+    const bebidas = {
+        'moca helado': 'mocahelado.html',
+        'americano': 'americano.html',
+        'expreso': 'expreso.html',
+        'capuchino': 'capuchino.html',
+        'frapuccino': 'frapuccino.html',
+        'afogato': 'afogato.html'
+    };
+    
+    const resultado = bebidas[query.toLowerCase()];
+    if (resultado) {
+        window.location.href = resultado;
+    } else {
+        alert('Bebida no encontrada. Intenta con: Moca Helado, Americano, Expreso, Capuchino, Frapuccino o Afogato');
+    }
+    
+    return false;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const filterBtns = document.querySelectorAll('.flex.space-x-4 span');
+    
+    filterBtns.forEach((btn, index) => {
+        btn.classList.add('filter-btn');
+        if (index === 0) btn.classList.add('active');
+        
+        btn.addEventListener('click', function() {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+
+            console.log('Filtro seleccionado:', this.textContent);
+        });
+    });
+
+    animateOnScroll();
+});
+
+function updateCartCount() {
+    const cartCount = document.getElementById('cart-count');
+    const count = cart.reduce((total, item) => total + item.quantity, 0);
+    cartCount.textContent = count;
+
+    cartCount.style.transform = 'scale(1.3)';
+    cartCount.style.color = '#8B4513';
+    setTimeout(() => {
+        cartCount.style.transform = 'scale(1)';
+        cartCount.style.color = '';
+    }, 200);
+}
+
+function adjustCartModal() {
+    const cartModal = document.getElementById('cart-modal');
+    const modalContent = cartModal.querySelector('.bg-white');
+    
+    if (window.innerWidth <= 768) {
+        modalContent.style.maxHeight = '90vh';
+        modalContent.style.margin = '5vh auto';
+    } else {
+        modalContent.style.maxHeight = '';
+        modalContent.style.margin = '';
+    }
+}
+
+window.addEventListener('resize', adjustCartModal);

@@ -2296,3 +2296,195 @@ body {
     display: block !important;
   }
 }
+#theme-toggle, #whatsapp-float {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#theme-toggle i, #whatsapp-float i {
+  font-size: 1.5rem;
+}
+
+/* Tooltip mejorado */
+#theme-toggle:hover .absolute,
+#whatsapp-float:hover .absolute {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+/* Mejora del menú hamburguesa */
+#mobile-menu-btn {
+  font-size: 1.8rem;
+  padding: 8px;
+  transition: all 0.3s ease;
+}
+
+#mobile-menu-btn:hover {
+  color: #654321;
+  transform: scale(1.1);
+}
+
+/* Animación del menú móvil */
+#mobile-menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out, opacity 0.3s ease;
+  opacity: 0;
+}
+
+#mobile-menu.show {
+  max-height: 500px;
+  opacity: 1;
+}
+
+/* Mejoras del carrito en móvil */
+@media (max-width: 768px) {
+  #cart-modal .bg-white {
+    margin: 10px;
+    max-height: calc(100vh - 20px);
+  }
+  
+  .cart-item {
+    padding: 12px;
+  }
+}
+
+/* Botones del carrito mejorados */
+.cart-item-controls button {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+/* Texto más grande en móvil */
+@media (max-width: 640px) {
+  body {
+    font-size: 16px;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+  }
+  
+  .text-sm {
+    font-size: 0.9rem;
+  }
+}
+
+/* Mejoras del header en móvil */
+@media (max-width: 1024px) {
+  header nav .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  header .bg-coffee .container {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+}
+
+/* Efectos de hover mejorados */
+.product-card {
+  transition: all 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* Mejoras del botón de agregar al carrito */
+.add-cart {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.add-cart:hover {
+  transform: scale(1.1);
+}
+
+/* Animación del icono del carrito */
+#cart-icon {
+  transition: all 0.3s ease;
+}
+
+#cart-icon:hover {
+  transform: scale(1.05);
+}
+
+/* Mejora de espaciado en móvil */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+/* Estilo para botones activos en filtros */
+.filter-btn.active {
+  background-color: #8B4513;
+  color: white;
+}
+
+.filter-btn {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.filter-btn:hover {
+  background-color: #A0522D;
+  color: white;
+}
+
+button:focus,
+input:focus,
+a:focus {
+  outline: 2px solid #8B4513;
+  outline-offset: 2px;
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  footer .grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  footer .flex.space-x-3 {
+    justify-content: center;
+  }
+}

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -109,21 +110,24 @@
     </div>
 
     <header class="bg-white shadow-md">
-      <div class="bg-coffee text-white py-2">
-        <div class="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center text-sm">
-          <div class="flex items-center mb-2 sm:mb-0">
-            <i class="fa-solid fa-headset mr-2"></i>
-            <span>Soporte: 948 738 012</span>
-          </div>
-          <div class="flex items-center">
-            <i class="fa-solid fa-user mr-4"></i>
-            <div class="flex items-center cursor-pointer" id="cart-icon">
-              <i class="fa-solid fa-cart-shopping mr-2"></i>
-              <span>Carrito (<span id="cart-count">0</span>)</span>
-            </div>
-          </div>
-        </div>
+<div class="bg-coffee text-white py-3">
+  <div class="container mx-auto px-4 flex flex-col sm:flex-row justify-between items-center text-sm lg:text-base">
+    <div class="flex items-center mb-2 sm:mb-0">
+      <i class="fa-solid fa-headset mr-2 text-base"></i>
+      <span class="font-medium">Soporte: 948 738 012</span>
+    </div>
+    <div class="flex items-center space-x-4">
+      <div class="flex items-center">
+        <i class="fa-solid fa-user mr-2 text-base"></i>
+        <span class="hidden sm:inline">Mi cuenta</span>
       </div>
+      <div class="flex items-center cursor-pointer hover:text-yellow-300 transition-colors" id="cart-icon">
+        <i class="fa-solid fa-cart-shopping mr-2 text-base"></i>
+        <span>Carrito (<span id="cart-count" class="font-bold">0</span>)</span>
+      </div>
+    </div>
+  </div>
+</div>
 
       <nav class="container mx-auto px-4 py-4">
         <div class="flex items-center justify-between">
@@ -134,9 +138,9 @@
             </h1>
           </div>
 
-          <button id="mobile-menu-btn" class="lg:hidden text-2xl text-coffee">
-            <i class="fa-solid fa-bars"></i>
-          </button>
+<button id="mobile-menu-btn" class="lg:hidden text-coffee p-2 rounded-md hover:bg-gray-100 transition-all duration-300">
+  <i class="fa-solid fa-bars"></i>
+</button>
 
           <div id="desktop-menu" class="hidden lg:flex items-center space-x-6">
             <ul class="flex space-x-6">
@@ -205,19 +209,20 @@
       </nav>
     </header>
     
-    <div id="theme-toggle" class="fixed bottom-20 right-4 bg-coffee text-white p-3 rounded-full shadow-lg cursor-pointer hover:bg-coffee-dark transition-colors z-40">
-      <div class="absolute -top-10 -left-16 bg-gray-800 text-white px-2 py-1 rounded text-sm opacity-0 hover:opacity-100 transition-opacity whitespace-nowrap">
-        Cambiar tema
-      </div>
-      <i class="fa-solid fa-moon"></i>
-    </div>
+<div id="whatsapp-float" class="fixed bottom-4 right-4 bg-green-500 text-white rounded-full shadow-lg cursor-pointer hover:bg-green-600 transition-all duration-300 z-40 hover:scale-110 animate-pulse w-14 h-14 flex items-center justify-center">
+  <div class="absolute -top-12 -left-24 bg-gray-800 text-white px-3 py-2 rounded-lg text-sm opacity-0 hover:opacity-100 transition-all duration-300 whitespace-nowrap pointer-events-none">
+    ¡Haz tu pedido aquí!
+    <div class="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-800"></div>
+  </div>
+  <i class="fab fa-whatsapp text-xl"></i>
+</div>
 
-    <div id="whatsapp-float" class="fixed bottom-4 right-4 bg-green-500 text-white p-3 rounded-full shadow-lg cursor-pointer hover:bg-green-600 transition-colors z-40">
-      <div class="absolute -top-10 -left-20 bg-gray-800 text-white px-2 py-1 rounded text-sm opacity-0 hover:opacity-100 transition-opacity whitespace-nowrap">
-        ¡Haz tu pedido aquí!
-      </div>
-      <i class="fab fa-whatsapp text-xl"></i>
-    </div>
+<div id="whatsapp-float" class="fixed bottom-4 right-4 bg-green-500 text-white p-3 rounded-full shadow-lg cursor-pointer hover:bg-green-600 transition-colors z-40">
+  <div class="absolute -top-10 -left-20 bg-gray-800 text-white px-2 py-1 rounded text-sm opacity-0 hover:opacity-100 transition-opacity whitespace-nowrap">
+    ¡Haz tu pedido aquí!
+  </div>
+  <i class="fab fa-whatsapp text-xl"></i>
+</div>
 
     <section class="bg-gradient-to-r from-coffee to-coffee-light text-white py-20 px-4">
       <div class="container mx-auto text-center">
